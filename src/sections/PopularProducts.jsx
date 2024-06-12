@@ -21,9 +21,10 @@ const PopularProducts = () => {
       sm:grid-cols-2 grid-cols-1
       sm:gap-6 gap-14">
         {products.map((product) => (
+          <div key={product.name}>
           <PopularProductsCard 
-          Key={product.name}
           {...product} />
+          </div>
         ))}
       </div>
     </section>
