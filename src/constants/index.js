@@ -32,25 +32,60 @@ export const statistics = [
 export const products = [
     {
         imgURL: shoe4,
-        name: "Nike Air Jordan-01",
+        name: "Nike Air Jordan 01",
         price: "$200.20",
     },
     {
         imgURL: shoe5,
-        name: "Nike Air Jordan-10",
+        name: "Nike Air Jordan 10",
         price: "$210.20",
     },
     {
         imgURL: shoe6,
-        name: "Nike Air Jordan-100",
+        name: "Nike Air Jordan 100",
         price: "$220.20",
     },
     {
         imgURL: shoe7,
-        name: "Nike Air Jordan-001",
+        name: "Nike Air Jordan 001",
         price: "$230.20",
     },
 ];
+
+export const productSelection =[
+    {
+        imgURL: shoe4,
+        name: "Nike Air Jordan 01",
+        price: "$200.20",
+        description: "Embrace the fusion of vintage hoops style and modern comfort with the Nike Dunk. Synthetic leather overlays add a retro flair, while the padded, low-cut collar ensures you can wear them all day long.",
+        ulList: ["Shown: Midnight Navy/University Red/White", 
+            "Code: HF4293-200"],
+    },
+    {
+        imgURL: shoe5,
+        name: "Nike Air Jordan 10",
+        price: "$210.20",
+        description: "Bringing back the classic basketball aesthetic, the Nike Dunk offers a timeless design with synthetic leather overlays. Its padded, low-cut collar provides comfort for any occasion.",
+        ulList: ["Shown: Black/White/Varsity Red",
+        "Code: SF3421-200"],
+    },
+    {
+        imgURL: shoe6,
+        name: "Nike Air Jordan 100",
+        price: "$220.20",
+        description: "The Nike Dunk seamlessly blends retro appeal with contemporary comfort. With synthetic leather overlays and a padded, low-cut collar, it’s perfect for both the court and the streets.",
+        ulList: ["Shown: Grey Fog/Orange Blaze/Black",
+        "Code: RC4444-422"],
+    },
+    {
+        imgURL: shoe7,
+        name: "Nike Air Jordan 001",
+        price: "$230.20",
+        description: "Elevate your style with the Nike Dunk, a perfect mix of classic basketball heritage and modern-day comfort. Synthetic leather overlays and a padded, low-cut collar make it versatile and stylish.",
+        ulList: ["Shown: Sail/University Blue/White",
+        "Code: TT4296-500"],
+    },
+]
 
 export const services = [
     {

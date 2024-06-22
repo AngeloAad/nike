@@ -1,24 +1,44 @@
+// Button.jsx
+import React from 'react';
 
-const Button = ({label, iconURL, backgroundColor,
-  borderColor, textColor, fullWidth}) => {
+const Button = ({
+  label,
+  iconURL,
+  backgroundColor,
+  borderColor,
+  textColor,
+  fullWidth,
+  roundness,
+  hoverBackgroundColor,
+  hoverTextColor,
+  hoverBorderColor,
+}) => {
+  // Construct the classes dynamically with hover effects
+  const classes = `
+    flex justify-center items-center gap-2 px-7 py-4 border font-montserrat text-lg leading-none 
+    ${backgroundColor || 'bg-coral-red'}
+    ${borderColor || 'border-coral-red'}
+    ${textColor || 'text-white'}
+    ${roundness || 'rounded-full'}
+    ${fullWidth ? 'w-full' : ''}
+    transition-all duration-300
+    ${hoverBackgroundColor ? `hover:${hoverBackgroundColor}` : ''}
+    ${hoverTextColor ? `hover:${hoverTextColor}` : ''}
+    ${hoverBorderColor ? `hover:${hoverBorderColor}` : ''}
+  `.trim();
+
   return (
-    <button className={`flex justify-center items-center
-    gap-2 px-7 py-4 border font-montserrat text-lg leading-none
-
-    ${backgroundColor
-    ? `${backgroundColor} ${borderColor} ${textColor}`
-    :"bg-coral-red text-white border-coral-red"}
-    rounded-full ${fullWidth && 'w-full'}"}`}>
-        {label}
-        
-        {/* as if saying if icronURL exists render the image else don't show an image */}
-        {iconURL && <img 
-        src={iconURL}  
-        alt="arrow right icon" 
-        className="ml-2 rounded-full
-        w-5 h-5"/>}
+    <button className={classes}>
+      {label}
+      {iconURL && (
+        <img 
+          src={iconURL}  
+          alt="icon" 
+          className="ml-2 rounded-full w-5 h-5"
+        />
+      )}
     </button>
-  )
-}
+  );
+};
 
 export default Button;

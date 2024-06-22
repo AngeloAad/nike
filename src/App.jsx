@@ -12,7 +12,7 @@ const App = () => (
       <Hero />
     </section>
 
-    <section className="padding">
+    <section id="products" className="padding">
       <PopularProducts />
     </section>
 
@@ -20,7 +20,7 @@ const App = () => (
       <SuperQuality />
     </section>
 
-    <section className="padding-x py-10">
+    <section id="about-us" className="padding-x py-10">
       <Services />
     </section>
 
@@ -32,7 +32,7 @@ const App = () => (
       <CustomerReviews />
     </section>
 
-    <section className="padding-x sm:py-32 py-16 w-full">
+    <section  id="contact-us" className="padding-x sm:py-32 py-16 w-full">
       <Subscribe />
     </section>
 
