@@ -28,14 +28,15 @@ const SideBar = ({ toggleMenu }) => {
             font-montserrat font-bold leading-normal justify-center
             items-center">
                 {navLinks.map((item) => (
+                    // TODO (it's working correctly bas el meshkle hiye bas ta sir aala a seperate page metel el ProductsSelection page wala wahde men el navlinks be kouno meshyin sah. bas lama tekbous aala el nike logo it directs back to the home page)
                     <li key={item.label}>
-                        <Link 
-                            to={item.href} 
+                        <a 
+                            href={item.href} 
                             className="fonts-montserat leading-normal text-lg text-black"
                             onClick={toggleMenu}
                         >
                             {item.label}
-                        </Link>
+                        </a>
                     </li>
                 ))}
             </ul>

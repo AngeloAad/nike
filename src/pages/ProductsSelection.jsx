@@ -5,6 +5,7 @@ import { productSelection } from '../constants';
 import { Footer } from '../sections';
 
 const ProductsSelection = () => {
+  // TODO (by default it will always show the first shoe in the array. regardless of which has been clicked bas fik terjaa t2alib bel shoes bas ta tsir aala the ProductsSelection page. ma zabatit maee eno bel home page farje el shoe yale nkabas)
   const [selectedProduct, setSelectedProduct] = useState(productSelection[0]);
 
   const handleProductClick = (product) => {

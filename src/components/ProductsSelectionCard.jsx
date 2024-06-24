@@ -3,6 +3,8 @@ import Button from './Button';
 import { arrowRight } from '../nike_landing_assets/assets/icons';
 
 const ProductsSelectionCard = ({ imgURL, name, price, description, ulList }) => {
+  
+  // TODO (ken tefkire bel useState eno to get the current value of the selected shoe size and add it to the cart)
   const [addToBag, setAddToBag] = useState([]);
 
   const handleClick = ((product) => {
