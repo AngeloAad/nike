@@ -1,19 +1,34 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Nav } from '../components';
 import ProductsSelectionCard from '../components/ProductsSelectionCard';
 import { productSelection } from '../constants';
 import { Footer } from '../sections';
+import { useLocation } from 'react-router-dom';
+
+const useQuery = () => {
+  return new URLSearchParams(useLocation().search);
+};
 
 const ProductsSelection = () => {
-  // TODO (by default it will always show the first shoe in the array. regardless of which has been clicked bas fik terjaa t2alib bel shoes bas ta tsir aala the ProductsSelection page. ma zabatit maee eno bel home page farje el shoe yale nkabas)
-  const [selectedProduct, setSelectedProduct] = useState(productSelection[0]);
+  const [selectedProduct, setSelectedProduct] = useState({});
+  const [similarProducts, setSimilarProducts] = useState([]);
+
+  const query = useQuery();
+  const shoe = query.get('shoe');
+
+  useEffect(() => {
+    
+    //  Find the shoe using the shoeId parameter
+    const tempShoe = productSelection.find(product => product.key === shoe);
+    if (tempShoe) {
+      setSelectedProduct(tempShoe); //  Set the found shoe as the selected product
+      setSimilarProducts(productSelection.filter(product => product.key !== shoe)); //  Filter out the selected product from the list to display similar products
+    }
+  }, [shoe]);
 
   const handleProductClick = (product) => {
     setSelectedProduct(product);
   };
-
-  // Filter out the selected product from the list to display similar products
-  const similarProducts = productSelection.filter(product => product !== selectedProduct);
 
   return (
     <>
@@ -24,7 +39,7 @@ const ProductsSelection = () => {
         className="flex justify-center items-center flex-col-reverse gap-10 padding xl:padding-l wide:padding-r padding-b"
       >
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 mt-8">
-          {similarProducts.map((selection) => (
+          {similarProducts?.map((selection) => (
             <div
               key={selection.name}
               className="cursor-pointer flex flex-col items-center mb-8"
@@ -35,8 +50,8 @@ const ProductsSelection = () => {
                 alt={selection.name}
                 className="w-[280px] h-[280px] mx-4"
               />
-              <h3 className="mt-4 text-2xl font-semibold font-palanquin">{selection.name}</h3>
-              <p className="mt-2 text-xl font-semibold font-montserrat text-coral-red">{selection.price}</p>
+              <h3 className="mt-4 text-2xl font-semibold font-palanquin">{selection?.name}</h3>
+              <p className="mt-2 text-xl font-semibold font-montserrat text-coral-red">{selection?.price}</p>
             </div>
           ))}
         </div>
@@ -46,13 +61,13 @@ const ProductsSelection = () => {
         </h2>
 
         <div className="mt-10 max-sm:flex max-sm:flex-col max-sm:items-center max-sm:justify-center flex lg:flex-col lg:justify-between items-center">
-          <ProductsSelectionCard
-            imgURL={selectedProduct.imgURL}
-            name={selectedProduct.name}
-            price={selectedProduct.price}
-            description={selectedProduct.description}
-            ulList={selectedProduct.ulList}
-          />
+        { selectedProduct?.key && <ProductsSelectionCard
+            imgURL={selectedProduct?.imgURL}
+            name={selectedProduct?.name}
+            price={selectedProduct?.price}
+            description={selectedProduct?.description}
+            ulList={selectedProduct?.ulList}
+          />}
         </div>
       </section>
 
