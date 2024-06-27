@@ -22,13 +22,20 @@ const ProductsSelection = () => {
     const tempShoe = productSelection.find(product => product.key === shoe);
     if (tempShoe) {
       setSelectedProduct(tempShoe); //  Set the found shoe as the selected product
-      setSimilarProducts(productSelection.filter(product => product.key !== shoe)); //  Filter out the selected product from the list to display similar products
+      changeSimilarProduct(shoe) //  Filter out the selected product from the list to display similar products
     }
   }, [shoe]);
 
   const handleProductClick = (product) => {
     setSelectedProduct(product);
+    changeSimilarProduct(product.key);
   };
+
+  const changeSimilarProduct = (key) => {
+    const tempSimilarProducts = productSelection.filter(product => product.key !== key);
+    setSimilarProducts(tempSimilarProducts);
+  }
+
 
   return (
     <>
@@ -36,8 +43,23 @@ const ProductsSelection = () => {
 
       <section
         id="home"
-        className="flex justify-center items-center flex-col-reverse gap-10 padding xl:padding-l wide:padding-r padding-b"
+        className="flex justify-center items-center flex-col gap-10 padding xl:padding-l wide:padding-r padding-b"
       >
+
+<div className="mt-10 max-sm:flex max-sm:flex-col max-sm:items-center max-sm:justify-center flex lg:flex-col lg:justify-between items-center">
+        { selectedProduct?.key && <ProductsSelectionCard
+            imgURL={selectedProduct?.imgURL}
+            name={selectedProduct?.name}
+            price={selectedProduct?.price}
+            description={selectedProduct?.description}
+            ulList={selectedProduct?.ulList}
+          />}
+        </div>
+
+         <h2 className="font-palanquin text-4xl capitalize font-bold lg:max-w-lg pt-12">
+          <span className="text-coral-red">Similar </span>Products
+        </h2>
+
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 mt-8">
           {similarProducts?.map((selection) => (
             <div
@@ -56,19 +78,9 @@ const ProductsSelection = () => {
           ))}
         </div>
 
-        <h2 className="font-palanquin text-4xl capitalize font-bold lg:max-w-lg pt-12">
-          <span className="text-coral-red">Similar </span>Products
-        </h2>
+       
 
-        <div className="mt-10 max-sm:flex max-sm:flex-col max-sm:items-center max-sm:justify-center flex lg:flex-col lg:justify-between items-center">
-        { selectedProduct?.key && <ProductsSelectionCard
-            imgURL={selectedProduct?.imgURL}
-            name={selectedProduct?.name}
-            price={selectedProduct?.price}
-            description={selectedProduct?.description}
-            ulList={selectedProduct?.ulList}
-          />}
-        </div>
+    
       </section>
 
       <footer className='flex justify-end items-center bg-black padding-x padding-t pb-8'>
