@@ -12,6 +12,7 @@ const Button = ({
   hoverBackgroundColor,
   hoverTextColor,
   hoverBorderColor,
+  onClick,
 }) => {
   // Construct the classes dynamically with hover effects
   const classes = `
@@ -28,7 +29,7 @@ const Button = ({
   `.trim();
 
   return (
-    <button className={classes}>
+    <button onClick={onClick} className={classes}>
       {label}
       {iconURL && (
         <img 
