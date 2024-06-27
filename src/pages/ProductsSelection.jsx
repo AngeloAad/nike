@@ -17,7 +17,7 @@ const ProductsSelection = () => {
   const shoe = query.get('shoe');
 
   useEffect(() => {
-    
+    window.scrollTo(0, 0);
     //  Find the shoe using the shoeId parameter
     const tempShoe = productSelection.find(product => product.key === shoe);
     if (tempShoe) {

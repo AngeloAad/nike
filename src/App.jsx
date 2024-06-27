@@ -3,8 +3,27 @@ import { CustomerReviews, Footer, Hero,
   Subscribe, SuperQuality } from "./sections";
 
   import Nav from "./components/Nav";
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
-const App = () => (
+const App = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const hash = location.hash;
+      if (hash) {
+        const id = hash.replace('#', '');
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    };
+    
+    handleScroll();
+  }, [location]);
+  return(
   <main className="relative">
      <Nav /> 
 
@@ -41,6 +60,6 @@ const App = () => (
     </section>
 
   </main>
-);
+)};
 
 export default App;
