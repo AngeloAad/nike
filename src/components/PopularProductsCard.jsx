@@ -2,10 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { star } from '../nike_landing_assets/assets/icons';
 
-const PopularProductsCard = ({ imgURL, name, price}) => {
+const PopularProductsCard = ({ product }) => {
+  const {imgURL, name, price, key} = product;
   return (
     <div className="flex flex-1 flex-col w-full max-sm:w-full max-sm:items-center">
-      <Link to="/productsSelection" onClick={() => { imgURL, name, price }}>
+      <Link to={`/productsSelection?shoe=${key}`} onClick={() => { imgURL, name, price }}>
         <img 
           src={imgURL} 
           alt={name}

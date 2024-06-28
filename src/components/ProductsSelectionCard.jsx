@@ -2,10 +2,38 @@ import React, {useState} from 'react';
 import Button from './Button';
 import { arrowRight } from '../nike_landing_assets/assets/icons';
 
+const sizes = [
+  {
+    size: 'M 9 / W 10.5',
+    key: 1
+  },
+  {
+    size: 'M 9.5 / W 11',
+    key: 2
+  },
+  {
+    size: 'M 10 / W 11.5',
+    key: 3
+  },
+  {
+    size: 'M 10.5 / W 12',
+    key: 4
+  },
+  {
+    size: 'M 11 / W 12.5',
+    key: 5
+  },
+  {
+    size: 'M 11.5 / W 13',
+    key: 6
+  }
+]
+
 const ProductsSelectionCard = ({ imgURL, name, price, description, ulList }) => {
   
   // TODO (ken tefkire bel useState eno to get the current value of the selected shoe size and add it to the cart)
   const [addToBag, setAddToBag] = useState([]);
+  const [selectedSize, setSelectedSize] = useState(null);
 
   const handleClick = ((product) => {
     
@@ -41,12 +69,9 @@ const ProductsSelectionCard = ({ imgURL, name, price, description, ulList }) => 
           Select Size
         </p>
         <div className="mt-2 grid grid-cols-2 gap-2">
-          <Button roundness="rounded-md" label="M 9 / W 10.5" backgroundColor="bg-white" borderColor="bg-white" textColor="text-slate-gray" hoverBackgroundColor="bg-gray-500" />
-          <Button roundness="rounded-md" label="M 9.5 / W 11" backgroundColor="bg-white" borderColor="white" textColor="text-slate-gray" hoverBackgroundColor="bg-gray-00" />
-          <Button roundness="rounded-md" label="M 10 / W 11.5" backgroundColor="bg-white" borderColor="white" textColor="text-slate-gray" hoverBackgroundColor="border-slate-gray" />
-          <Button roundness="rounded-md" label="M 10.5 / W 12" backgroundColor="bg-white" borderColor="white" textColor="text-slate-gray" hoverBackgroundColor="border-slate-gray" />
-          <Button roundness="rounded-md" label="M 11 / W 12.5" backgroundColor="bg-white" borderColor="white" textColor="text-slate-gray" hoverBackgroundColor="border-slate-gray" />
-          <Button roundness="rounded-md" label="M 11.5 / W 13" backgroundColor="bg-white" borderColor="white" textColor="text-slate-gray" hoverBackgroundColor="border-slate-gray" />
+          {sizes.map((size) => (
+            <Button key={size.key} onClick={() => setSelectedSize(size.key)} roundness="rounded-md" label={size.size} backgroundColor="bg-white" borderColor={selectedSize === size.key ? "border-black" : "border-gray"} textColor="text-slate-gray" hoverBackgroundColor="bg-gray-500" />
+          ))}
         </div>
         
 

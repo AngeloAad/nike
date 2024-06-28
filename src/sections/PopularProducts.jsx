@@ -36,8 +36,8 @@ const PopularProducts = () => {
       sm:gap-6 gap-14"
       >
         {products.map((product) => (
-          <div key={product.name}>
-            <PopularProductsCard {...product} />
+          <div key={product.key}>
+            <PopularProductsCard product={product} />
           </div>
         ))}
       </div>
